@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using bytebank.Titular;
 
-namespace bytebank
+namespace bytebank.Contas
 {
     public class ContaCorrente
     {
@@ -16,13 +17,13 @@ namespace bytebank
 
         public void Depositar(double valor)
         {
-            this.saldo += valor;
+            saldo += valor;
         }
         public bool Sacar(double valor)
         {
-            if (valor <= this.saldo)
+            if (valor <= saldo)
             {
-                this.saldo -= valor;
+                saldo -= valor;
                 return true;
             }
             else { return false; }
@@ -30,12 +31,13 @@ namespace bytebank
 
         public bool Transferir(double valor, ContaCorrente destino)
         {
-            if(this.saldo < valor)
+            if (saldo < valor)
             {
                 return false;
             }
-            else {
-                this.Sacar(valor);
+            else
+            {
+                Sacar(valor);
                 destino.Depositar(valor);
                 return true;
             }
