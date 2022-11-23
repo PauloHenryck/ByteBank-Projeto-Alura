@@ -27,6 +27,19 @@ namespace bytebank
             else { return false; }
         }
 
+        public bool Transferir(double valor, ContaCorrente destino)
+        {
+            if(this.saldo < valor)
+            {
+                return false;
+            }
+            else { 
+                this.saldo -= valor;
+                destino.saldo += valor;
+                return true;
+            }
+        }
+
 
     }
 
