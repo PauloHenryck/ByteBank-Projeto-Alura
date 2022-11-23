@@ -10,8 +10,9 @@ namespace bytebank
     {
         public int numero_agencia;
         public string conta;
-        public string titular;
         public double saldo;
+
+        public Cliente titular;
 
         public void Depositar(double valor)
         {
@@ -33,9 +34,9 @@ namespace bytebank
             {
                 return false;
             }
-            else { 
-                this.saldo -= valor;
-                destino.saldo += valor;
+            else {
+                this.Sacar(valor);
+                destino.Depositar(valor);
                 return true;
             }
         }
